@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobAssist – Smart Job Search Platform for Faster Hiring</title>
+  <meta name="description" content="Find your next job with JobAssist. Personalized job matches, AI-tailored applications, and one-click applying so you can focus on interviews." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark">JA</span> Job<span class="accent">Assist</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#matches">Jobs</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="app.html">Open App</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="pill reveal">✦ Your AI Job Search Assistant</span>
+      <h1 class="reveal">Apply smarter and land interviews faster with AI</h1>
+      <p class="hero-sub reveal">
+        JobAssist surfaces high-match roles, tailors your application materials,
+        and lets you apply in a single click — so your energy goes into interviews,
+        not forms.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="app.html" class="btn btn-primary btn-lg">Start Applying →</a>
+        <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
+      </div>
+      <div class="rating reveal">
+        <span class="stars">★★★★★</span>
+        <strong>Excellent</strong>
+        <span class="muted">4.8 · Based on 870+ reviews</span>
+      </div>
+
+      <!-- Floating job cards -->
+      <div class="match-grid reveal" id="matches">
+        <article class="job-card">
+          <div class="job-head">
+            <span class="avatar" style="--c:#2f6fed">NR</span>
+            <div><h3>Customer Service Rep</h3><p>Northwind Retail · US · Full-time</p></div>
+          </div>
+          <p class="job-summary">Support customers with orders, returns and questions at a fast-moving service desk.</p>
+          <ul class="job-points"><li>Experience aligns with role</li><li>Skills match requirements</li></ul>
+          <div class="score score-high">94/100 · Excellent fit</div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-head">
+            <span class="avatar" style="--c:#f59e0b">VX</span>
+            <div><h3>Data Entry Specialist</h3><p>Vertex Logistics · US · Full-time</p></div>
+          </div>
+          <p class="job-summary">Enter and verify order and inventory records across high-volume internal systems.</p>
+          <ul class="job-points"><li>Strong background fit</li><li>Good communication skills</li></ul>
+          <div class="score score-mid">91/100 · Great fit</div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-head">
+            <span class="avatar" style="--c:#10b981">OC</span>
+            <div><h3>Software Engineer</h3><p>Oakline Cloud · Remote · Full-time</p></div>
+          </div>
+          <p class="job-summary">Build and ship features across consumer products alongside design and platform teams.</p>
+          <ul class="job-points"><li>Meets core requirements</li><li>Team-oriented skills</li></ul>
+          <div class="score score-mid">89/100 · Great fit</div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-head">
+            <span class="avatar" style="--c:#8b5cf6">HM</span>
+            <div><h3>Senior Software Engineer</h3><p>Helix Microsystems · US · Full-time</p></div>
+          </div>
+          <p class="job-summary">Design, build and scale cloud services used by enterprise customers worldwide.</p>
+          <ul class="job-points"><li>Relevant experience</li><li>Available to start soon</li></ul>
+          <div class="score score-high">94/100 · Excellent fit</div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-head">
+            <span class="avatar" style="--c:#ef4444">AP</span>
+            <div><h3>Product Manager</h3><p>Aptora Labs · Remote · Full-time</p></div>
+          </div>
+          <p class="job-summary">Own product direction, prioritize the roadmap, and ship features with engineering.</p>
+          <ul class="job-points"><li>Strong background fit</li><li>Related work experience</li></ul>
+          <div class="score score-mid">91/100 · Great fit</div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-head">
+            <span class="avatar" style="--c:#06b6d4">FS</span>
+            <div><h3>Project Manager</h3><p>Ferrostone Capital · US · Full-time</p></div>
+          </div>
+          <p class="job-summary">Plan and deliver cross-team projects, tracking scope, timelines and stakeholders.</p>
+          <ul class="job-points"><li>Meets core requirements</li><li>Good communication skills</li></ul>
+          <div class="score score-low">87/100 · Good fit</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Stats ===== -->
+  <section class="stats">
+    <div class="container stats-inner">
+      <div class="stat reveal"><strong data-count="20000">0+</strong><span>New jobs added daily</span></div>
+      <div class="stat reveal"><strong data-count="7000000">7M+</strong><span>Verified job listings</span></div>
+      <div class="stat reveal"><strong data-count="500000">500K+</strong><span>Tailored applications sent</span></div>
+    </div>
+  </section>
+
+  <!-- ===== Comparison ===== -->
+  <section class="section compare">
+    <div class="container">
+      <p class="eyebrow reveal">Why JobAssist</p>
+      <h2 class="reveal">Apply to 10 jobs in minutes – not hours</h2>
+      <div class="compare-grid">
+        <div class="compare-card old reveal">
+          <h3>Doing it alone</h3>
+          <ul>
+            <li>✗ Refreshing job boards every night</li>
+            <li>✗ Rewriting resumes &amp; cover letters by hand</li>
+            <li>✗ Filling out the same forms again and again</li>
+            <li>✗ Losing track of replies and interviews</li>
+          </ul>
+        </div>
+        <div class="compare-card new reveal">
+          <h3>With JobAssist</h3>
+          <ul>
+            <li>✓ Daily AI-validated matches ready to apply</li>
+            <li>✓ Resume &amp; cover letter tailored per role</li>
+            <li>✓ One-click Auto Apply</li>
+            <li>✓ Replies, interviews &amp; next steps tracked</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section alt" id="how">
+    <div class="container">
+      <p class="eyebrow reveal">How it works</p>
+      <h2 class="reveal">From profile to Auto Apply in three steps</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="step-num">01</span>
+          <h3>Complete your profile</h3>
+          <p>Take a quick quiz and upload your resume so JobAssist understands your skills, goals and preferences.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-num">02</span>
+          <h3>Get validated matches</h3>
+          <p>Every role is scored 0–100 against your profile, so you only spend time on jobs worth applying to.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-num">03</span>
+          <h3>Auto Apply, tailored</h3>
+          <p>Approve a match and we tailor your resume, write the cover letter, fill the form and submit it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Match scoring demo ===== -->
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="eyebrow reveal">Match scoring</p>
+        <h2 class="reveal">Only see jobs worth your time</h2>
+        <p class="reveal">Set your title, salary, location and must-haves. JobAssist scans fresh postings daily and scores each one against your profile — refine with Like / Dislike and the feed adapts.</p>
+        <button class="btn btn-primary reveal" id="refineBtn">Refine my matches ↻</button>
+      </div>
+      <div class="phone reveal">
+        <div class="phone-header"><strong>980</strong> matches today</div>
+        <div id="feed"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Auto Apply ===== -->
+  <section class="section alt">
+    <div class="container split reverse">
+      <div class="apply-card reveal">
+        <div class="apply-job">
+          <span class="avatar big" style="--c:#e11d48">HD</span>
+          <div><h4>Home Depot</h4><p>Sales Representative · Full-time · US</p></div>
+        </div>
+        <div class="resume-doc">
+          <span class="doc-tag">Tailored Resume</span>
+          <p>Optimized for <strong>Home Depot · Sales Representative</strong></p>
+          <div class="doc-lines"><span></span><span></span><span></span><span></span></div>
+        </div>
+        <button class="btn btn-primary full" id="autoApplyBtn">⚡ Auto Apply</button>
+        <p class="apply-note" id="applyNote">Nothing is ever submitted without your approval.</p>
+      </div>
+      <div>
+        <p class="eyebrow reveal">Auto Apply</p>
+        <h2 class="reveal">You tap once.<br />We do the rest.</h2>
+        <p class="reveal">Spot a match? Hit Auto Apply and JobAssist tailors your resume to the posting, writes a cover letter in your voice, fills every field and submits. You review everything first — always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Cover letter ===== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow reveal">Tailored cover letters</p>
+      <h2 class="reveal">A cover letter written for every role</h2>
+      <div class="letter-card reveal">
+        <div class="letter-head">
+          <strong>Alexander Murphy</strong>
+          <span>Software Engineer · Stripe · Aug 20, 2026</span>
+        </div>
+        <p>Dear Hiring Team,</p>
+        <p>With a decade of experience shipping reliable web systems at scale, I'd love to bring that track record to Stripe's engineering team.</p>
+        <p>At Vantara Systems, I led the rebuild of a multi-tenant analytics product used by hundreds of enterprise customers, designing an ingestion pipeline that handles tens of millions of events per day and cut dashboard latency by more than half. Before that, at Meridian Financial Tech, I reworked the database layer behind core payment flows, which brought average API response times down dramatically during quarter-end peaks.</p>
+        <p>I care about clean architecture, honest estimates and software that stays maintainable long after launch. I'd be glad to walk through how this experience maps to the challenges your team is facing.</p>
+        <p class="sign">Warm regards,<br /><strong>Alexander Murphy</strong></p>
+        <div class="letter-tags">
+          <span>Role-specific opening</span><span>Matched to posting</span><span>Your voice</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Inbox / tracking ===== -->
+  <section class="section alt">
+    <div class="container split">
+      <div>
+        <p class="eyebrow reveal">Inbox &amp; tracking</p>
+        <h2 class="reveal">Every application, reply and interview in one place</h2>
+        <p class="reveal">Interview invites and recruiter replies land right next to the applications they belong to — organized, prioritized and easy to act on.</p>
+        <div class="mini-stats reveal">
+          <div><strong>312</strong><span>Applied</span></div>
+          <div><strong>47</strong><span>Viewed</span></div>
+          <div><strong>9</strong><span>Interviews</span></div>
+        </div>
+      </div>
+      <div class="inbox reveal">
+        <div class="inbox-item unread">
+          <span class="dot"></span>
+          <div><h5>UnitedHealth Recruiting · Interview</h5><p>Interview availability – Healthcare Administrator</p></div>
+          <time>9:41 AM</time>
+        </div>
+        <div class="inbox-item">
+          <div><h5>CVS Health · Reply</h5><p>Thanks for applying – next steps</p></div>
+          <time>Yesterday</time>
+        </div>
+        <div class="inbox-item status">
+          <div><h5>Home Depot</h5><p>Sales Representative · Applied 2d ago</p></div>
+          <span class="badge">Applied</span>
+        </div>
+        <div class="inbox-foot">+4 interviews this week 🎉</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow reveal">Loved by job seekers</p>
+      <h2 class="reveal">Members are landing interviews faster</h2>
+    </div>
+    <div class="marquee reveal">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </section>
+
+  <!-- ===== Pricing ===== -->
+  <section class="section alt" id="pricing">
+    <div class="container">
+      <p class="eyebrow reveal">Pricing</p>
+      <h2 class="reveal">Free. Really.</h2>
+      <p class="section-sub reveal">This build runs entirely in your browser — no subscriptions, no trials, nothing to cancel.</p>
+      <div class="pricing-grid single">
+        <div class="price-card featured reveal">
+          <span class="flag">100% free</span>
+          <h3>Everything included</h3>
+          <p class="price">$0 <span>/ forever</span></p>
+          <ul class="free-list">
+            <li>✓ Live job matches, scored 0–100</li>
+            <li>✓ AI-tailored cover letters (bring your own free key, or use offline templates)</li>
+            <li>✓ Application tracker</li>
+            <li>✓ Your data never leaves your browser</li>
+          </ul>
+          <a href="app.html" class="btn btn-primary full">Open the app</a>
+        </div>
+        <div class="price-card reveal">
+          <h3>Optional: AI mode</h3>
+          <p class="price">$0 <span>/ free API tier</span></p>
+          <p class="price-note">Paste a free Gemini or Groq key in settings and the cover letters get written by AI instead of templates. Still $0.</p>
+          <a href="app.html" class="btn btn-ghost full">Set up in settings</a>
+        </div>
+        <div class="price-card reveal">
+          <h3>Privacy built-in</h3>
+          <p class="price">🔒 <span>&nbsp;local-only</span></p>
+          <p class="price-note">Profile, tracker and keys live in your browser's storage. No accounts, no servers, no selling anything to anyone.</p>
+          <a href="#faq" class="btn btn-ghost full">Read the FAQ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="container narrow">
+      <p class="eyebrow reveal">FAQ</p>
+      <h2 class="reveal">Questions, answered</h2>
+      <div class="faq-list reveal">
+        <details>
+          <summary>What does "Auto Apply" actually mean?</summary>
+          <p>Auto Apply is a one-click action. Pick a role you like, click Auto Apply, and we fill out the application and attach a cover letter tailored to that job using your resume. You choose every job — nothing is ever sent without your approval.</p>
+        </details>
+        <details>
+          <summary>How do you find my matches?</summary>
+          <p>We scan millions of verified listings daily. Our AI compares your role, experience, skills and preferences against each job's actual requirements and shows you the best-fit roles first.</p>
+        </details>
+        <details>
+          <summary>Do you guarantee interviews or offers?</summary>
+          <p>No tool can guarantee an employer's response. What we guarantee is that every application you send is real, tailored and matched to your profile. Many users see activity within the first couple of weeks, though results vary by market and role.</p>
+        </details>
+        <details>
+          <summary>How do I cancel?</summary>
+          <p>Cancelling takes under a minute from your account — no phone calls, no retention screens. You keep full access until the end of your billing period and won't be charged again.</p>
+        </details>
+        <details>
+          <summary>Will employers know I used AI?</summary>
+          <p>No — employers see a normal, professionally written application. Your cover letter is built around your own experience and your resume stays yours.</p>
+        </details>
+        <details>
+          <summary>Is my data safe?</summary>
+          <p>Yes. Your data is encrypted in transit and at rest, never sold, and used only to power matching and applications. Delete anything — or everything — anytime from settings.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="reveal">Start Auto Applying today</h2>
+      <p class="reveal">Set up your profile, review live matches, and send tailored applications in minutes.</p>
+      <a href="app.html" class="btn btn-light btn-lg reveal">Start Applying →</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="logo" href="#"><span class="logo-mark">JA</span> Job<span class="accent">Assist</span></a>
+      <nav>
+        <a href="#matches">Jobs</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <p>© 2026 JobAssist. All rights reserved. Built for demonstration purposes.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

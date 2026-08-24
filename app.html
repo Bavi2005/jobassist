@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobAssist – Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body class="app-body">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">JA</span> Job<span class="accent">Assist</span></a>
+      <nav class="nav app-nav">
+        <button class="tab-link active" data-tab="matches">Matches</button>
+        <button class="tab-link" data-tab="saved">Saved</button>
+        <button class="tab-link" data-tab="applied">Applied</button>
+      </nav>
+      <div class="header-actions">
+        <span class="ai-badge" id="aiBadge">Offline mode</span>
+        <button class="btn btn-ghost btn-sm" id="settingsBtn">⚙ Settings</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Onboarding ===== -->
+  <section class="onboard-wrap hidden" id="onboarding">
+    <form class="onboard-card" id="profileForm">
+      <h2>Welcome! Let's set up your profile</h2>
+      <p>This powers your match scores and tailored letters. Everything stays in your browser — nothing is uploaded.</p>
+
+      <label>Full name
+        <input type="text" id="pfName" placeholder="Alex Murphy" required />
+      </label>
+      <label>Target job titles <small>(comma separated)</small>
+        <input type="text" id="pfTitles" placeholder="software engineer, frontend developer, web developer" required />
+      </label>
+      <label>Your skills <small>(comma separated — used for matching)</small>
+        <input type="text" id="pfSkills" placeholder="javascript, react, python, SQL, communication" required />
+      </label>
+      <label>Location preference
+        <select id="pfLocation">
+          <option value="remote">Remote only</option>
+          <option value="usa">USA</option>
+          <option value="europe">Europe</option>
+          <option value="anywhere">Anywhere</option>
+        </select>
+      </label>
+      <label>Paste your resume / experience summary
+        <textarea id="pfResume" rows="6" placeholder="Senior engineer with 6 years building web apps at startups. Led migration to React, cut load times 40%…"></textarea>
+      </label>
+      <button class="btn btn-primary btn-lg full" type="submit">Find my matches →</button>
+    </form>
+  </section>
+
+  <!-- ===== Dashboard ===== -->
+  <main class="app-main container hidden" id="dashboard">
+    <div class="stats-row">
+      <div class="stat-chip"><strong id="statMatches">–</strong><span>Live matches</span></div>
+      <div class="stat-chip"><strong id="statSaved">0</strong><span>Saved</span></div>
+      <div class="stat-chip"><strong id="statApplied">0</strong><span>Applied</span></div>
+      <div class="stat-chip"><strong id="statInterviews">0</strong><span>Interviews</span></div>
+    </div>
+
+    <div class="feed-controls">
+      <input type="search" id="feedSearch" placeholder="Filter matches by keyword…" />
+      <select id="minScore">
+        <option value="0">Any score</option>
+        <option value="60">60+ · Decent fit</option>
+        <option value="75" selected>75+ · Good fit</option>
+        <option value="90">90+ · Excellent fit</option>
+      </select>
+      <button class="btn btn-primary" id="refreshBtn">↻ Refresh jobs</button>
+    </div>
+
+    <p class="feed-status" id="feedStatus">Loading live jobs…</p>
+    <div class="job-feed" id="jobFeed"></div>
+  </main>
+
+  <!-- ===== Settings drawer ===== -->
+  <div class="drawer-backdrop hidden" id="settingsBackdrop">
+    <aside class="drawer">
+      <button class="close-x" id="settingsClose">✕</button>
+      <h3>Settings</h3>
+
+      <h4>AI provider <small>(free tiers available)</small></h4>
+      <label>Provider
+        <select id="aiProvider">
+          <option value="offline">Offline templates (no key needed)</option>
+          <option value="gemini">Google Gemini (free tier)</option>
+          <option value="groq">Groq Llama (free tier)</option>
+        </select>
+      </label>
+      <label class="hidden" id="keyRow">API key
+        <input type="password" id="aiKey" placeholder="Paste your free API key" autocomplete="off" />
+        <small class="muted">Stored only in this browser. Free keys:
+          <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Gemini ↗</a> ·
+          <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq ↗</a>
+        </small>
+      </label>
+
+      <h4>Profile & resume</h4>
+      <textarea id="settingsResume" rows="8" placeholder="Resume / experience summary used for tailoring…"></textarea>
+      <label>Name<input type="text" id="settingsName" /></label>
+      <label>Skills<input type="text" id="settingsSkills" /></label>
+      <label>Target titles<input type="text" id="settingsTitles" /></label>
+
+      <button class="btn btn-primary full" id="saveSettings">Save settings</button>
+      <hr />
+      <button class="btn btn-ghost full danger" id="wipeData">Delete all my data</button>
+    </aside>
+  </div>
+
+  <!-- ===== Cover letter modal ===== -->
+  <div class="drawer-backdrop hidden" id="letterBackdrop">
+    <div class="modal">
+      <button class="close-x" id="letterClose">✕</button>
+      <h3 id="letterTitle">Cover letter</h3>
+      <p class="muted" id="letterSub"></p>
+      <div class="letter-status hidden" id="letterStatus"></div>
+      <textarea id="letterText" rows="14" spellcheck="false"></textarea>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="regenLetter">↻ Regenerate</button>
+        <button class="btn btn-ghost" id="copyLetter">Copy</button>
+        <button class="btn btn-ghost" id="downloadLetter">Download .txt</button>
+        <a class="btn btn-primary" id="applyLink" target="_blank" rel="noopener">Open application ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
