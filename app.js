@@ -152,10 +152,19 @@ async function loadJobs(force = false) {
   afterLoad(Date.now());
 }
 function afterLoad(at) {
-  renderAll();
   const myCount = state.jobs.filter((j) => j.region === "my").length;
   const remCount = state.jobs.filter((j) => j.region === "remote-open").length;
-  setStatus(`${state.jobs.length} jobs loaded (${timeLabel(Math.max(daysAgo(new Date(at).toISOString()), 0))}) · ${myCount} Malaysia-linked · ${remCount} worldwide-remote${state.settings.adzunaKey ? " · Adzuna MY active" : " · add free Adzuna key in Settings for full MY listings"}`);
+  let widened = false;
+  if (myCount === 0 && remCount > 0 && !$("includeRemote").checked) {
+    $("includeRemote").checked = true;
+    widened = true;
+  }
+  renderAll();
+  setStatus(
+    `${myCount > 0 ? `${myCount} Malaysia-linked` : "No Malaysia-tagged"} · ${remCount} worldwide-remote shown` +
+    (widened ? " — auto-widened because no Malaysia jobs were tagged on free boards today." : "") +
+    (state.settings.adzunaKey ? " · Adzuna MY active ✓" : " ⚠ Add your FREE Adzuna key in Settings for real Malaysian listings")
+  );
 }
 
 /* ---------- scoring ---------- */
@@ -264,7 +273,9 @@ function renderFeed() {
   );
 }
 function renderStats() {
-  $("statMatches").textContent = state.jobs.filter((j) => j.region === "my").length || "–";
+  const myJobs = state.jobs.filter((j) => j.region === "my");
+  const shown = myJobs.length ? myJobs : state.jobs.filter((j) => j.region === "remote-open");
+  $("statMatches").textContent = state.jobs.length ? shown.length : "–";
   $("statSaved").textContent = state.tracker.filter((t) => t.status === "saved").length;
   $("statApplied").textContent = state.tracker.filter((t) => t.status !== "saved").length;
   $("statInterviews").textContent = state.tracker.filter((t) => t.status === "interview").length;
