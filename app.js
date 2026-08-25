@@ -106,7 +106,7 @@ async function fetchJobicy() {
     remote: true,
     tags: Array.isArray(j.jobLevel) ? j.jobLevel : [j.jobLevel].filter(Boolean),
     type: j.jobType || "",
-    salary: j.salaryMin ? `${j.salaryCurrency || "$"}${j.salaryMin}k+` : "",
+    salary: j.salaryMin ? `${j.salaryCurrency || "$"}${j.salaryMin >= 1000 ? Math.round(j.salaryMin / 1000) + "k" : j.salaryMin}+` : "",
     date: j.pubDate,
     text: stripHtml(j.jobDescription || j.jobExcerpt || "").slice(0, 3000),
     url: j.url,
